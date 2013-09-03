@@ -479,7 +479,7 @@ char wanted_hotkey[] = "Alt-X";
 #else
 #define EXPORT
 #endif
-extern "C" plugin_t PLUGIN =
+extern "C" EXPORT plugin_t PLUGIN =
 {
   IDP_INTERFACE_VERSION,
   0,				// plugin flags
