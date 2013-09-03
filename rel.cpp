@@ -86,7 +86,7 @@ void PatchAddress24(uint32_t section, uint32_t offset, uint32_t value)
 	/* (S + A - P) >> 2 */
 	uint32_t where = GetSectionAddress(section, offset);
 	value -= where;
-	ulong orig = get_original_long(where);
+	uint32_t orig = (uint32_t)get_original_long(where);
 	orig &= 0xFC000003;
 	orig |= value & 0x03FFFFFC;
 	PatchByte(where + 0, (orig >> 24) & 0xFF);
@@ -176,7 +176,7 @@ int read_section_table(linput_t *fp, section_entry *entries, int offset, int cou
 	}
 	return(1);
 }
-int read_import_table(linput_t *fp, import_entry *entries, int offset, int count)
+int read_import_table(linput_t *fp, import_entry *entries, int offset, uint32_t count)
 {
 	qlseek(fp, offset, SEEK_SET);
 	if (qlread(fp, entries, sizeof(import_entry)*count) != sizeof(import_entry)*count) return (0);
