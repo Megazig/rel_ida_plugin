@@ -26,7 +26,7 @@
 
 uint32_t GetHighestRegisterRoundedUp()
 {
-	return 0x80680000;
+	return 0x80612000;
 }
 void PatchByte(uint32_t address, unsigned char value)
 {
